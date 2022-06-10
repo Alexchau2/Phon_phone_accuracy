@@ -29,6 +29,10 @@ import numpy as np
 from contextlib import contextmanager
 # import dtale
 from test_func import test_func
+import tkinter as tk
+# from tkinter import ttk
+from tkinter import filedialog as fd
+# from tkinter.messagebox import showinfo
         
 @contextmanager
 def change_dir(newdir):
@@ -61,7 +65,11 @@ def folder_input(subdirectories=True, separate_file_path=True, path=False):
 
     """
     if not path:
-        directory = input("Enter directory containing Phon output files (csv): ")
+        # directory = input("Enter directory containing Phon output files (csv): ")
+        
+        directory = fd.askdirectory()
+        print(directory)
+
     elif path:
         directory = os.path.normpath(path)
     with change_dir(os.path.normpath(directory)):
